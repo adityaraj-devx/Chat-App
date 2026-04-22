@@ -1,11 +1,12 @@
+import os
 from cs50 import SQL
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, flash, session, url_for
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import login_required
 
 app = Flask(__name__)
-app.secret_key = "secret"
+app.secret_key = os.environ.get("SECRET KEY", os.urandom(24))
 
 
 app.config["SESSION_PERMANENT"] = False
@@ -18,14 +19,17 @@ db = SQL("sqlite:///database.db")
 @app.route("/")
 @login_required
 def index():
-    messages = db.execute("""
+    messages = db.execute(
+        """
         SELECT messages.id, message, timestamp, users.username, users.id as user_id
         FROM messages
         JOIN users ON messages.user_id = users.id
         ORDER BY timestamp ASC
-    """)
+    """
+    )
 
     return render_template("index.html", messages=messages)
+
 
 @app.route("/send", methods=["POST"])
 @login_required
@@ -34,16 +38,14 @@ def send():
 
     if messages:
         db.execute(
-            "INSERT INTO messages (user_id, message) VALUES(?, ?)", session["user_id"], messages
+            "INSERT INTO messages (user_id, message) VALUES(?, ?)",
+            session["user_id"],
+            messages,
         )
 
-        return redirect("/")
-    
-@app.route("/chat", methods=["GET", "POST"])
-@login_required
-def chat():
-    pass
-    
+    return redirect("/")
+
+
 @app.route("/delete/<int:msg_id>", methods=["POST"])
 @login_required
 def delete(msg_id):
@@ -63,6 +65,22 @@ def delete(msg_id):
     flash("Message deleted")
     return redirect("/")
 
+
+@app.route("/profile")
+def profile():
+    user = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
+
+    if len(user) != 1:
+        flash("User not found")
+        return redirect("/")
+
+    msg_count = db.execute(
+        "SELECT COUNT(*) as count FROM messages WHERE user_id = ?", session["user_id"]
+    )[0]["count"]
+
+    return render_template("profile.html", user=user[0], msg_count=msg_count)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -74,27 +92,28 @@ def register():
         if not username or not email or not password or not confirmation:
             flash("Fill all the fields")
             return redirect("/register")
-        
+
         if password != confirmation:
             flash("Password do not match")
             return redirect("/register")
-        
+
         hash = generate_password_hash(password)
 
         try:
             db.execute(
-                "INSERT INTO users(username, email, hash) VALUES (?, ?, ?)", username, email, hash
+                "INSERT INTO users(username, email, has, created_at) VALUES (?, ?, ?, DATETIME('NOW '))",
+                username,
+                email,
+                hash,
             )
         except:
             flash("Username or email already exist")
             return redirect("/register")
-        
+
         flash("Registered successfully!!")
         return redirect("/login")
     else:
         return render_template("register.html")
-
-
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -126,6 +145,7 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/forgot", methods=["GET", "POST"])
 def forgot():
     if request.method == "POST":
@@ -136,33 +156,33 @@ def forgot():
         if not email or not new_password or not confirm_password:
             flash("Fill all fields")
             return redirect("/forgot")
-        
+
         if new_password != confirm_password:
             flash("Password do not match")
             return redirect("/forgot")
-        
-        rows = db.execute(
-            "SELECT * FROM users WHERE email = ?", email
-        )
+
+        rows = db.execute("SELECT * FROM users WHERE email = ?", email)
 
         if len(rows) != 1:
             flash("Email not found")
             return redirect("/forgot")
-            
+
         hash = generate_password_hash(new_password)
 
         db.execute("UPDATE users SET hash = ? WHERE email = ?", hash, email)
 
         flash("Password updated successfully!")
-        return("/login")
-    
+        return redirect("/login")
+
     else:
         return render_template("forgot.html")
+
 
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/login")
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=8000)

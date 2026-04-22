@@ -5,14 +5,14 @@ Reset Password
 {% endblock %}
 
 {% block main %}
-<div class=class="login-container animate__animated animate__fadeIn">
+<div class="login-container animate__animated animate__fadeIn">
     <div>
         <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
     </div>
     <h3 class="text-whitesmoke">Forgot Password?</h3>
     <p class="text-whitesmoke">Change your password.</p>
     <div class="container-content">
-        <form action="/login" method="post" class="margin-t">
+        <form action="/forgot" method="post" class="margin-t">
             <div class="form-group">
                 <input type="email" name="email" autocomplete="off" class="form-control" placeholder="Enter your email"
                     required>

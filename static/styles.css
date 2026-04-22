@@ -1,11 +1,10 @@
-/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Background */
+
 body {
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,11 +14,11 @@ body {
     justify-content: center;
     align-items: center;
 
-    padding-top: 80px; /* prevents navbar overlap */
+    padding-top: 80px;
     overflow-x: hidden;
 }
 
-/* 🔝 Navbar */
+
 nav {
     position: fixed;
     top: 0;
@@ -42,21 +41,21 @@ nav .logo {
     color: #ffeb3b;
 }
 
-/* Logo */
+
 nav a:first-child {
     font-size: 20px;
     font-weight: bold;
     color: #ffeb3b;
 }
 
-/* Right side links */
+
 .nav-links {
     margin-left: auto;
     display: flex;
     gap: 15px;
 }
 
-/* Nav links style */
+
 .nav-links a {
     padding: 6px 14px;
     border-radius: 6px;
@@ -68,16 +67,16 @@ nav a:first-child {
     transition: 0.3s;
 }
 
-/* Button-style links */
+
 .nav-links a {
     padding: 6px 14px;
     border-radius: 6px;
     color: white;
     transition: 0.3s;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Hover effect */
+
 .nav-links a:hover {
     color: white;
 }
@@ -88,7 +87,7 @@ nav a:first-child {
     font-weight: bold;
 }
 
-/* Container (Glass Effect) */
+
 .login-container {
     width: 350px;
     padding: 30px;
@@ -101,7 +100,7 @@ nav a:first-child {
     text-align: center;
 }
 
-/* Heading */
+
 h3 {
     color: #ffffff;
     margin-bottom: 10px;
@@ -113,7 +112,7 @@ p {
     margin-bottom: 20px;
 }
 
-/* Input Fields */
+
 .form-control {
     width: 100%;
     padding: 12px;
@@ -131,12 +130,12 @@ p {
     color: #aaa;
 }
 
-/* Input focus */
+
 .form-control:focus {
     border: 1px solid #ffeb3b;
 }
 
-/* Button */
+
 .form-button {
     width: 100%;
     padding: 12px;
@@ -153,13 +152,13 @@ p {
     transition: 0.3s;
 }
 
-/* Button hover */
+
 .form-button:hover {
     background: #fdd835;
     transform: scale(1.03);
 }
 
-/* Links */
+
 a {
     color: #ffeb3b;
     text-decoration: none;
@@ -170,7 +169,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Flash messages */
 ul {
     list-style: none;
     margin-bottom: 10px;
@@ -181,12 +179,13 @@ li {
     font-size: 14px;
 }
 
-/* Icon */
+
 .logo-badge {
     font-size: 60px;
     color: #ffeb3b;
     margin-bottom: 10px;
 }
+
 ul {
     list-style: none;
     padding: 0;
@@ -206,7 +205,7 @@ li {
     padding: 12px 20px;
     border-radius: 8px;
 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .flash-text {
@@ -214,7 +213,7 @@ li {
     margin: 0;
 }
 
-/* Chat container */
+
 
 .chat-wrapper {
     display: flex;
@@ -230,15 +229,15 @@ li {
     height: 75vh;
     margin: 0 auto;
     border-radius: 16px;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
     padding: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
-/* Chat box */
+
 .chat-box {
     flex: 1;
     overflow-y: auto;
@@ -248,7 +247,7 @@ li {
     padding-right: 5px;
 }
 
-/* MESSAGES AREA */
+
 #chat-box {
     flex: 1;
     overflow-y: auto;
@@ -258,7 +257,7 @@ li {
     padding-right: 5px;
 }
 
-/* MESSAGE STYLE */
+
 .message {
     max-width: 70%;
     padding: 10px 14px;
@@ -269,7 +268,7 @@ li {
     word-wrap: break-word;
 }
 
-/* TIME BELOW MESSAGE */
+
 .message small {
     display: block;
     font-size: 10px;
@@ -278,7 +277,7 @@ li {
     color: #333;
 }
 
-/* INPUT BAR */
+
 .chat-form {
     display: flex;
     gap: 10px;
@@ -291,7 +290,7 @@ li {
     border-radius: 25px;
     border: none;
     outline: none;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
 }
 
@@ -315,13 +314,13 @@ li {
     margin-bottom: 20px;
     font-size: 32px;
 }
-/* Message rows */
+
 .message-row {
     display: flex;
     margin-bottom: 12px;
 }
 
-/* Alignment */
+
 .my-row {
     justify-content: flex-end;
 }
@@ -330,7 +329,7 @@ li {
     justify-content: flex-start;
 }
 
-/* Message bubble */
+
 .message-bubble {
     max-width: 65%;
     padding: 12px 15px;
@@ -339,21 +338,21 @@ li {
     font-size: 14px;
 }
 
-/* My messages */
+
 .my-row .message-bubble {
     background: #ffeb3b;
     color: black;
     border-bottom-right-radius: 4px;
 }
 
-/* Others messages */
+
 .other-row .message-bubble {
     background: #2b2b2b;
     color: white;
     border-bottom-left-radius: 4px;
 }
 
-/* Header */
+
 .msg-header {
     font-size: 11px;
     opacity: 0.7;
@@ -362,7 +361,7 @@ li {
     justify-content: space-between;
 }
 
-/* Input area */
+
 .chat-input {
     display: flex;
     gap: 10px;
@@ -375,7 +374,7 @@ li {
     border-radius: 25px;
     border: none;
     outline: none;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
 }
 
@@ -393,7 +392,7 @@ li {
     transform: scale(1.05);
 }
 
-/* Delete button */
+
 .delete-btn {
     position: absolute;
     top: 5px;
@@ -429,10 +428,10 @@ li {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+
 @media (max-width: 768px) {
 
-    /* Chat container full width */
+
     .chat-container {
         width: 95%;
         margin: 80px 0 0;
@@ -440,21 +439,20 @@ li {
         bottom: 10px;
     }
 
-    /* Chat box full height */
     .chat-box {
         height: calc(100vh - 160px);
         border-radius: 10px;
         padding: 10px;
     }
 
-    /* Message bubbles bigger */
+
     .message-bubble {
         max-width: 85%;
         font-size: 15px;
         padding: 10px 12px;
     }
 
-    /* Input fixed bottom */
+
     .chat-input {
         position: fixed;
         bottom: 0;
@@ -472,7 +470,7 @@ li {
         padding: 10px 15px;
     }
 
-    /* Navbar spacing */
+
     nav {
         padding: 10px 15px;
     }
@@ -483,7 +481,7 @@ li {
     }
 }
 
-button{
+button {
     min-height: 40px;
 }
 
