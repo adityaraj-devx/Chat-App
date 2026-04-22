@@ -26,9 +26,12 @@
                     </div>
 
                     {% if msg.user_id == session.user_id %}
-                    <form action="/delete/{{ msg.id }}" method="post" class="delete-form">
-                        <button class="delete-btn">✖</button>
-                    </form>
+                    <div class="msg-actions">
+                        <a href="/update/{{ msg.id }}">✏️</a>
+                        <form action="/delete/{{ msg.id }}" method="post" class="delete-form">
+                            <button class="delete-btn">✖</button>
+                        </form>
+                    </div>
                     {% endif %}
 
                 </div>

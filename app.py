@@ -65,6 +65,35 @@ def delete(msg_id):
     flash("Message deleted")
     return redirect("/")
 
+@app.route("/update/<int:msg_id>", methods=["GET", "POST"])
+@login_required
+def update(msg_id):
+    msg = db.execute(
+        "SELECT * FROM messages WHERE id = ?", msg_id
+    )
+    
+    if len(msg) != 1:
+        flash("Message not found")
+        return redirect("/")
+    
+    if msg[0]["user_id"] != session["user_id"]:
+        flash("Not allowed")
+        return redirect("/")
+    
+    if request.method == "POST":
+        new_msg = request.form.get("message")
+
+        if not new_msg:
+            flash("Message cannot be empty")
+            return redirect(f"/update/{msg_id}")
+        
+        db.execute(
+            "UPDATE messages SET message = ? WHERE id = ?", new_msg,
+            msg_id
+        )
+        return redirect("/")
+    
+    return render_template("edit.html", msg=msg[0])
 
 @app.route("/profile")
 def profile():
@@ -101,7 +130,7 @@ def register():
 
         try:
             db.execute(
-                "INSERT INTO users(username, email, has, created_at) VALUES (?, ?, ?, DATETIME('NOW '))",
+                "INSERT INTO users(username, email, hash, created_at) VALUES (?, ?, ?, DATETIME('NOW '))",
                 username,
                 email,
                 hash,
