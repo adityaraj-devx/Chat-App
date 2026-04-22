@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<div class="login-container text-c animate__animated animate__flipInX">
+    <div>
+        <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+    </div>
+    <h3 class="text-whitesmoke">Sign Up</h3>
+    <p class="text-whitesmoke">Create your account</p>
+    <div class="container-content">
+        <form action="/register" method="post" class="margin-t">
+            <div class="form-group">
+                <input type="text" name="username" autocomplete="off" class="form-control"
+                    placeholder="Enter your username" required="">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" autocomplete="off" class="form-control" placeholder="Enter your email"
+                    required="">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" autocomplete="off"
+                    placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="confirmation" autocomplete="off"
+                    placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="form-button button-l margin-b">Sign Up</button>
+
+
+            <p class="text-whitesmoke text-center"><small>Have an account?</small></p>
+            <a class="text-darkyellow" href="{{ url_for('login') }}"><small>Sign In</small></a>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body class="main-bg">
+
+    <nav>
+        <a href="/" class="logo">WeChat</a>
+
+        <div class="nav-links">
+            {% if session.get("user_id") %}
+            <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+            <a href="/logout">Logout</a>
+            {% else %}
+            <a href="/login" class="{% if request.path == '/login' %}active{% endif %}">Login</a>
+            <a href="/register" class="{% if request.path == '/register' %}active{% endif %}">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash-box">
+        {% for message in messages %}
+        <p class="flash-text">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% block main %}{% endblock %}
+
+</body>
+
+</html>

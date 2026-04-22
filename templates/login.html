@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block main %}
+<div class=class="login-container text-c animate__animated animate__flipInX">
+    <div>
+        <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+    </div>
+    <h3 class="text-whitesmoke">Login</h3>
+    <p class="text-whitesmoke">Welcome back. Please Sign in</p>
+    <div class="container-content">
+        <form action="/login" method="post" class="margin-t">
+            <div class="form-group">
+                <input type="email" name="email" autocomplete="off" class="form-control" placeholder="Enter your email"
+                    required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" autocomplete="off"
+                    placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="form-button button-l margin-b">Sign In</button>
+            <p class="text-whitesmoke text-center"><small>Do not have an account?</small></p>
+            <a class="text-darkyellow" href="{{ url_for('register') }}"><small>Sign Up</small></a>
+            <br>
+            <a class="text-darkyellow" href="{{ url_for('forgot') }}"><small>Forgot Password?</small></a>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

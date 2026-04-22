@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="chat-wrapper">
+
+    <h1 class="chat-room">Chat Room</h1>
+
+    <div class="chat-container">
+
+        <div class="chat-box" id="chat-box">
+
+            {% for msg in messages %}
+            <div class="message-row {% if msg.user_id == session.user_id %}my-row{% else %}other-row{% endif %}">
+
+                <div class="message-bubble">
+
+                    <div class="msg-text">
+                        {{ msg.message }}
+                    </div>
+
+                    <div class="msg-meta">
+                        {% if msg.user_id != session.user_id %}
+                        {{ msg.username }} •
+                        {% endif %}
+                        {{ msg.timestamp.split(" ")[1] }}
+                    </div>
+
+                    {% if msg.user_id == session.user_id %}
+                    <form action="/delete/{{ msg.id }}" method="post" class="delete-form">
+                        <button class="delete-btn">✖</button>
+                    </form>
+                    {% endif %}
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <form action="/send" method="post" class="chat-input">
+            <input type="text" name="message" placeholder="Type a message..." required>
+            <button type="submit">Send</button>
+        </form>
+
+    </div>
+</div>
+
+<script>
+window.onload = function () {
+    let box = document.getElementById("chat-box");
+    if (box) {
+        box.scrollTop = box.scrollHeight;
+    }
+};
+</script>
+
+{% endblock %}
