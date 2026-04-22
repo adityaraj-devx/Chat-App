@@ -23,7 +23,7 @@
 
         <div class="nav-links">
             {% if session.get("user_id") %}
-            <a href="/profile">Profile</a>
+            <a href="/profile"> <span><i class="fa-solid fa-circle-user"></i></span> Profile</a>
             <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
             <a href="/logout">Logout</a>
             {% else %}

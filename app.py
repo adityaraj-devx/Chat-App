@@ -30,7 +30,6 @@ def index():
 
     return render_template("index.html", messages=messages)
 
-
 @app.route("/send", methods=["POST"])
 @login_required
 def send():
@@ -44,7 +43,6 @@ def send():
         )
 
     return redirect("/")
-
 
 @app.route("/delete/<int:msg_id>", methods=["POST"])
 @login_required

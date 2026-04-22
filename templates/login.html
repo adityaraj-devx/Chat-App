@@ -1,10 +1,9 @@
 {% extends "layout.html" %}
-
 {% block title %}
 Log In
 {% endblock %}
-
 {% block main %}
+<div class="login-wrap">
 <div class="login-container text-c animate__animated animate__flipInX">
     <div>
         <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
@@ -21,7 +20,7 @@ Log In
                 <input type="password" class="form-control" name="password" autocomplete="off"
                     placeholder="Enter your password" required>
             </div>
-            <button type="submit" class="form-button button-l margin-b">Sign In</button>
+            <button type="submit" class="form-button button-l margin-b"> <span><i class="fa-solid fa-arrow-right-to-bracket"></i></span> Sign In</button>
             <p class="text-whitesmoke text-center"><small>Do not have an account?</small></p>
             <a class="text-darkyellow" href="{{ url_for('register') }}"><small>Sign Up</small></a>
             <br>
@@ -29,5 +28,6 @@ Log In
         </form>
 
     </div>
+</div>
 </div>
 {% endblock %}
