@@ -1,20 +1,25 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<div class="main-container">
+<div class="chat-wrap">
+    <div class="edit-container">
+        <div class="main-container">
 
-    <div class="card">
-        <h3>Edit Message</h3>
+            <div class="card">
+                <h3 class="Edit">Edit Message</h3>
 
-        <form method="post">
-            <input type="text" name="message" value="{{ msg.message }}" class="form-control" required>
+                <form method="post">
+                    <input type="text" name="message" value="{{ msg.message }}" class="form-control" required>
 
-            <button type="submit" class="form-button">Update</button>
-        </form>
+                    <button type="submit" class="form-button"> <span><i class="fa-solid fa-pen"></i></span>
+                        Update</button>
+                </form>
 
-        <br>
-        <a href="/">Cancel</a>
+                <br>
+                <a href="/">Cancel</a>
+            </div>
+
+        </div>
     </div>
-
 </div>
 {% endblock %}

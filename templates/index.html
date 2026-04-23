@@ -1,10 +1,9 @@
 {% extends "layout.html" %}
 
 {% block main %}
+<div class="chat-wrap">
 <div class="chat-wrapper">
-
     <h1 class="chat-room">Chat Room</h1>
-
     <div class="chat-container">
 
         <div class="chat-box" id="chat-box">
@@ -42,11 +41,14 @@
         </div>
 
         <form action="/send" method="post" class="chat-input">
-            <input type="text" name="message" placeholder="Type a message..." required>
-            <button type="submit">Send</button>
+            <input type="text" name="message" autocomplete="off" placeholder="Type a message..." required>
+            <button type="submit" style="color: white;"><span>
+                <i class="fa-solid fa-paper-plane"></i>
+            </span> Send</button>
         </form>
 
     </div>
+</div>
 </div>
 
 <script>
