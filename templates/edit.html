@@ -8,13 +8,12 @@
             <div class="card">
                 <h3 class="Edit">Edit Message</h3>
 
-                <form method="post">
+                <form action="/messages/{{ msg.id }}" method="post">
                     <input type="text" name="message" value="{{ msg.message }}" class="form-control" required>
 
                     <button type="submit" class="form-button"> <span><i class="fa-solid fa-pen"></i></span>
                         Update</button>
                 </form>
-
                 <br>
                 <a href="/">Cancel</a>
             </div>

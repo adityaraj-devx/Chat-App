@@ -13,17 +13,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    padding-top: 80px;
+    flex-direction: column;
     overflow-x: hidden;
 }
-
 
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 15px 40px;
+    padding: 12px 40px;
 
     display: flex;
     align-items: center;
@@ -35,16 +33,21 @@ nav {
     z-index: 1000;
 }
 
-nav .logo {
-    font-size: 20px;
-    font-weight: bolder;
-    color: #ffeb3b;
+.logo {
+    height: 46px;
+    width: auto;
+
 }
 
+.logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
 
 nav a:first-child {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 600;
     color: black;
 }
 
@@ -85,9 +88,11 @@ nav a:first-child {
 .nav-links a.active-home {
     font-weight: bolder;
 }
+
 .nav-links a.active-login {
     color: black;
 }
+
 .nav-links a.active-home:hover {
     color: black;
 }
@@ -113,22 +118,11 @@ nav a:first-child {
 }
 
 .register-wrap {
-    padding-top: 100px;
-    padding-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100dvh;
-    width: 100%;
     background-image: url("/static/images/chat.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-top: -80px !important;
-    background-color: rgba(237, 233, 254, 0.9);
 }
+
 .login-wrap {
-    padding-top: 50px;
+    padding-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,7 +132,6 @@ nav a:first-child {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: -80px !important;
     background-color: rgba(237, 233, 254, 0.9);
 }
 
@@ -171,8 +164,7 @@ p {
     width: 100%;
     padding: 12px;
     margin: 0 0 10px 0;
-    border-radius: 1px ;
-    /* border: none; */
+    border-radius: 1px;
     background: white;
     color: black;
     outline: none;
@@ -199,7 +191,15 @@ p {
     transition: 0.3s;
 }
 
-.text-whitesmoke {
+.text-whitesmoke-user {
+    margin-top: 6px;
+    font-size: 28px;
+}
+.text-whitesmoke-email {
+    margin-top: 6px;
+    font-size: 16px;
+}
+.text-whitesmoke{
     margin-top: 6px;
     font-size: 16px;
 }
@@ -289,7 +289,6 @@ li {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: -80px !important;
     background-color: rgba(237, 233, 254, 0.9);
 }
 
@@ -383,6 +382,8 @@ li {
     transition: 0.2s;
 }
 
+
+
 .chat-form button:hover {
     transform: scale(1.05);
 }
@@ -403,8 +404,7 @@ li {
 
 
 .message-bubble {
-    max-width: 75%;
-    min-width: 70%;
+    width: 90%;
     padding: 12px 15px;
     border-radius: 14px;
     position: relative;
@@ -413,15 +413,15 @@ li {
 
 
 .my-row .message-bubble {
-    background: rgba(130, 0, 219, 0.8);
-    color: white;
+    background: rgba(242, 223, 255, 0.8);
+    color: rgb(0, 0, 0);
     border-bottom-right-radius: 4px;
 }
 
 
 .other-row .message-bubble {
-    background: #2b2b2b;
-    color: white;
+    background: #efe4f8;
+    color: rgb(0, 0, 0);
     border-bottom-left-radius: 4px;
 }
 
@@ -494,31 +494,21 @@ li {
 
 .my-row .msg-meta {
     text-align: right;
+    color: black;
 }
 
 .other-row .msg-meta {
     text-align: left;
+    color: black;
 }
 
-.chat-room {
-    color:  rgb(0, 0, 0);
-    margin-bottom: 20px;
-    font-size: 42px;
-    font-style: bold;
-    text-decoration: underline;
-    font-weight: bolder;
-    text-align: center;
-    padding-top: 40px;
-    /* padding-bottom: 0%; */
-    position: relative;
-}
 
 @media (max-width: 768px) {
 
 
     .chat-container {
         width: 95%;
-        margin: 80px 0 0;
+        margin: 10px 0 0;
         padding: 0 10px;
         bottom: 10px;
     }
@@ -543,7 +533,7 @@ li {
         left: 0;
         width: 100%;
         padding: 10px;
-        background: #121212;
+
     }
 
     .chat-input input {
@@ -570,10 +560,6 @@ button {
 }
 
 @media (max-width: 768px) {
-
-    body {
-        padding-top: 60px;
-    }
 
     nav {
         position: fixed;

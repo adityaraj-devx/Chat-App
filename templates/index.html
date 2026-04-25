@@ -3,7 +3,6 @@
 {% block main %}
 <div class="chat-wrap">
 <div class="chat-wrapper">
-    <h1 class="chat-room">Chat Room</h1>
     <div class="chat-container">
 
         <div class="chat-box" id="chat-box">
@@ -26,8 +25,8 @@
 
                     {% if msg.user_id == session.user_id %}
                     <div class="msg-actions">
-                        <a href="/messages/update/{{ msg.id }}">✏️</a>
-                        <form action="/messages/delete/{{ msg.id }}" method="post" class="delete-form">
+                        <a href="/messages/{{ msg.id }}">✏️</a>
+                        <form action="/messages/{{ msg.id }}/delete" method="post" class="delete-form">
                             <button class="delete-btn">✖</button>
                         </form>
                     </div>
@@ -40,7 +39,7 @@
 
         </div>
 
-        <form action="/messages/send" method="post" class="chat-input">
+        <form action="/messages" method="post" class="chat-input">
             <input type="text" name="message" autocomplete="off" placeholder="Type a message..." required>
             <button type="submit" style="color: white;"><span>
                 <i class="fa-solid fa-paper-plane"></i>

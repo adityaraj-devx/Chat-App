@@ -4,34 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body class="main-bg">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="/"><img src="/static/images/logo.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    {% if session.get("user_id") %}
+                    <li class="nav-item ms-lg-4">
+                        <a href="/profile"> <span><i class="fa-solid fa-circle-user"></i></span> Profile</a>
+                    </li>
+                    <li class="nav-item ms-lg-4">
+                        <a href="/logout"> <span><i class="fa-solid fa-power-off"></i></span> Logout</a>
+                    </li>
 
-    <nav>
-        <a href="/" class="logo">WeChat</a>
-
-        <div class="nav-links">
-            {% if session.get("user_id") %}
-            <a href="/profile"> <span><i class="fa-solid fa-circle-user"></i></span> Profile</a>
-            <a href="/" class="{% if request.path == '/' %}active-home{% endif %}"> <span><i class="fa-solid fa-house-chimney-window"></i></span> Home</a>
-            <a href="/logout"> <span><i class="fa-solid fa-power-off"></i></span> Logout</a>
-            {% else %}
-            <a href="/login" class="{% if request.path == '/login' %}active-login{% endif %}">Login</a>
-            <a href="/register" class="{% if request.path == '/register' %}active{% endif %}">Register</a>
-            {% endif %}
+                    {% else %}
+                    <li class="nav-item ms-lg-4">
+                        <a href="/login" class="{% if request.path == '/login' %}active-login{% endif %}">Login</a>
+                    </li>
+                    <li class="nav-item ms-lg-4">
+                        <a href="/register" class="{% if request.path == '/register' %}active{% endif %}">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </nav>
+
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <div class="flash-box">
@@ -44,6 +55,9 @@
 
     {% block main %}{% endblock %}
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

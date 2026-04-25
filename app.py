@@ -30,7 +30,7 @@ def index():
 
     return render_template("index.html", messages=messages)
 
-@app.route("/messages/send", methods=["POST"])
+@app.route("/messages", methods=["POST"])
 @login_required
 def send():
     messages = request.form.get("message")
@@ -44,7 +44,7 @@ def send():
 
     return redirect("/")
 
-@app.route("/messages/delete/<int:msg_id>", methods=["POST"])
+@app.route("/messages/<int:msg_id>/delete", methods=["POST"])
 @login_required
 def delete(msg_id):
 
@@ -63,7 +63,7 @@ def delete(msg_id):
     flash("Message deleted")
     return redirect("/")
 
-@app.route("/messages/update/<int:msg_id>", methods=["GET", "POST"])
+@app.route("/messages/<int:msg_id>", methods=["GET", "POST"])
 @login_required
 def update(msg_id):
     msg = db.execute(
