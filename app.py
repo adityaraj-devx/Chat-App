@@ -6,7 +6,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import login_required
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET KEY", os.urandom(24))
+app.secret_key = os.environ.get("SECRET_KEY", os.urandom(24))
 
 
 app.config["SESSION_PERMANENT"] = False
