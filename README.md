@@ -24,19 +24,24 @@ Before building this project or studying this cousre I had no idea the these sys
 - **Login Required** -- Protected pages redirect unauthenticated users to the login page.
 
 ## Project Structure and File Explanations
+
+```
 Chat-App/
-├── app.py           # Main Flask app
-├── helpers.py       # login_required function
-├── database.db      # Database file
-├── static/          # CSS and other files
-└── templates/       # HTML files
-    ├── layout.html
-    ├── index.html
-    ├── login.html
-    ├── register.html
-    ├── edit.html
-    ├── profile.html
+│── app.py              # Main Flask app
+│── helpers.py          # login_required function
+│── database.db         # Database file
+│
+├── static/             # CSS and other files
+│
+└── templates/          # HTML files
+    │── layout.html
+    │── index.html
+    │── login.html
+    │── register.html
+    │── edit.html
+    │── profile.html
     └── forgot.html
+```
 
 **app.py** -- This is the main part of this application. It contains all the flask routes that handles every page and actionn in the application. This inlcude the register route that handles user input and insert new users into the database, the login route that check the credentials and starts a session, the index route that loads and displays all messages, the edit route and delete routes that alllow the user to edit or delete their own messages after sending, the profile route that fetches the display the user data, and the logout route that clears the session. 
 
