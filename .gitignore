@@ -1,5 +1,0 @@
-__pycache__/
-*.pyc
-flask_session/
-database.db
-.vscode/
