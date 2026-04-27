@@ -1,6 +1,6 @@
 # FunChat -- CS50 Final Project
 
-#### Video Demo: <YOUR YOUTUBE URL HERE>
+#### Video Demo: https://youtu.be/l3V7b5KAXqE
 
 #### Description:
 
