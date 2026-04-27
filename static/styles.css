@@ -18,17 +18,9 @@ body {
 }
 
 nav {
-    position: fixed;
+    position: sticky !important;
     top: 0;
     width: 100%;
-    padding: 12px 40px;
-
-    display: flex;
-    align-items: center;
-
-    background: white;
-    backdrop-filter: blur(10px);
-
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     z-index: 1000;
 }
